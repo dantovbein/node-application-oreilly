@@ -12,9 +12,9 @@
 <body>
 <div id="certificate"></div>
 <script type="text/javascript">
-    CertificateView = Backbone.View.extend({
+    /*CertificateView = Backbone.View.extend({
         defaults:{
-            userName:"No name"
+            'userName':'No name'
         },
         initialize: function() {
             this.render();
@@ -27,7 +27,35 @@
             return this.userName;
         }
     });
-    var certificate_view = new CertificateView({ el: $("#certificate")});
+    var certificate_view = new CertificateView({ el: $("#certificate")});*/
+
+    var Stooge = Backbone.Model.extend({
+        defaults:{
+            'nickname':'No name assigned'
+        },
+        initialize:function(){
+
+        },
+        getNickname:function(){
+            return this.nickname;
+        },
+        setNickname:function(n){
+            this.nickname = n;
+        }
+    });
+
+    var Stooges = Backbone.Collection.extend({
+        model:Stooge
+    });
+
+    var curly = new Stooge();
+    var moe = new Stooge();
+
+    var stooges = new Stooges();
+    stooges.add([curly,moe]);
+
+    debugger;
+
 </script>
 </body>
 </html>
